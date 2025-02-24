@@ -8,9 +8,6 @@ import multiprocessing.shared_memory as shm
 
 P1 = 0.1
 P2 = 1.0
-STEEPNESS = 5
-MIDPOINT = 0.5
-gamma = 1.0
 
 
 def estimate_revenue(graph_shared, seed_set, setR=10000):
