@@ -15,14 +15,14 @@ from models.optimized_IMM_modified import imm_modified_optimized
 from models.monteCarloC import P1
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--m", "--method", type=str, dest="method", choices=["opt_imm_cbga", "opt_imm", "opt_imm_weighted", "opt_imm_modified"], default='opt_imm', required=False)
-parser.add_argument("--g", "--graph", type=str, dest="graph", choices=["facebook", "twitter", "dblp", "youtube", "lj"], default="facebook", help='Which graph to use')
+parser.add_argument("--m", "--method", type=str, dest="method", choices=["opt_imm_cbga", "opt_imm", "opt_imm_weighted", "opt_imm_modified"], default='opt_imm_cbga', required=False)
+parser.add_argument("--g", "--graph", type=str, dest="graph", choices=["facebook", "twitter", "email", "dblp", "youtube", "lj"], default="facebook", help='Which graph to use')
 parser.add_argument("--k", type=int, default=50, help='size of seed set')
 parser.add_argument("--e", "--epsilon", type=float, dest="epsilon", default=0.1, required=False, help='parameter of (epsilon-delta)-approximation')
 parser.add_argument("--d", "--delta", type=float, dest="delta", default=None, required=False, help='parameter of (epsilon-delta)-approximation')
-parser.add_argument("--R", "--setR", type=int, dest="setR", default=None, help='the number of Monte Carlo simulations')
+parser.add_argument("--R", "--setR", type=int, dest="setR", default=10000, help='the number of Monte Carlo simulations')
 parser.add_argument("--num_re", "--num_repeat_experiment", type=int, dest="num_repeat_experiment", default=1, required=False, help="number of repeat experiments")
-parser.add_argument("--sa", "--sa", type=str, dest="sa", default="n", choices=["n", "l", "u", "sa"], required=False)
+parser.add_argument("--sa", "--sa", type=str, dest="sa", default="n", choices=["n", "l", "u", "sa"], required=False, help="the parameter for SA strategy, only used when [m=='opt_imm_cbga']")
 args = parser.parse_args()
 
 log_dir = "log_{}".format(args.graph)
